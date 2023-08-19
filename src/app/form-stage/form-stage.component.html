@@ -1,0 +1,147 @@
+<!--<body>
+    <form style="margin-top:36px" (submit)="sendEmail($event)">
+      <label for="#name">Your Name</label>
+      <input type="text" name="name"  id="name" placeholder="Your name.." [(ngModel)]="name">
+  
+      <label for="#email">Email</label>
+      <input type="email" name="email"  id="email" placeholder="Your email.." [(ngModel)]="mail">
+      
+      <label for="#subject">Subject</label>
+      <input type="text" name="subject"  id="subject" placeholder="Your email..">
+
+      <label for="#message">Message</label>
+      <textarea name="message"  id="message" placeholder="Write something.." style="height:200px" [(ngModel)]="message"></textarea>
+      <br>
+      <p> {{name}} </p>  
+      <button type="submit">send</button>
+    </form>
+  </body>-->
+<body>
+ <div class="container">
+  <form #login="ngForm" (ngSubmit)="sendEmail($event,login)">
+    <div class="row" style="display: grid;place-items:center;">
+      <img src="../../assets/images/stegLogo.jpg" style="width: 250px;" class="rounded-circle shadow-lg">
+  </div>
+    <div class="row">
+      <div class="col-md-4 col-sm-6 form-group">
+        <label for="#nom">Nom:</label>
+        <input minlength="3" type="text" id="nom" name="nom" [(ngModel)]="name" class="form-control" #nom="ngModel" required>
+        <div class="error" *ngIf="nom.touched && !nom.valid">
+          <div *ngIf="nom.errors?.['required']">Ce champ est obligatoire priére de le remplir</div>
+          <div *ngIf="nom.errors?.['minlength']">le nom doit être de 3 caractères au moins</div>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 form-group">
+        <label for="#surname">Prenom:</label>
+        <input minlength="3" type="text" id="surname" name="surname" ngModel #surname="ngModel" class="form-control" required>
+        <div class="error" *ngIf="surname.touched && !surname.valid">
+          <div *ngIf="surname.errors?.['required']">Ce champ est obligatoire priére de le remplir</div>
+          <div *ngIf="surname.errors?.['minlength']">le Prénom doit être de 3 caractères au moins</div>
+        </div>
+      </div>
+      <div class="col-md-4 form-group">
+        <label for="#tel">Num-Tel:</label>
+        <input type="tel" id="tel" name="tel" ngModel class="form-control" #tel="ngModel" required pattern="[1-9]{2}[0-9]{3}[0-9]{3}">
+        <div class="error" *ngIf="tel.touched && !tel.valid">
+          <div *ngIf="tel.errors?.['required']">Ce champ  est obligatoire priére de le remplir</div>
+          <div *ngIf="tel.errors?.['pattern']">le numero doit être de 8 chiffres exactement</div>   
+        </div>  
+      </div>
+    </div>
+    <br>
+    <div class="row form-group">
+      <label for="#email">E-mail:</label>
+      <input type="email" id="email" name="email" class="form-control" ngModel #email="ngModel" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
+      <div class="error" *ngIf="email.touched && !email.valid">
+        <div *ngIf="email.errors?.['required']">Ce champ  est obligatoire priére de le remplir</div>
+        <div *ngIf="email.errors?.['pattern']">Cet adrresse ne suit pas le format correct pour le moment</div>   
+      </div>  
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-4">
+        <label for="#gender">Genre:</label>
+        <select id="gender" name="gender" class="form-control" required>
+          <option>Homme</option>
+          <option>Femme</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="#Institut">Institut:</label>
+        <select id="Institut" name="Institut" class="form-control" required>
+          <option>ISTIC</option>
+          <option>ISSAT</option>
+          <option>INSET</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="#niv">Niveau:</label>
+        <select id="niv" name="niv" class="form-control" required>
+          <option>1ére année</option>
+          <option>2éme année</option>
+          <option>3éme année</option>
+        </select>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="#piece">Piéce d'identité:</label>
+        <select id="piece" name="piece" class="form-control" required>
+          <option>CIN</option>
+          <option>Passeport</option>
+          <option>Permis</option>
+        </select>
+      </div>
+      <div class="col-md-6 form-group">
+        <label for="#nump">Num piéce d'identité:</label>
+        <input ngModel #nump="ngModel" type="number" id="nump" name="nump" class="form-control" required min="100">
+        <div class="error" *ngIf="nump.touched && !nump.valid">
+          <div *ngIf="nump.errors?.['required']">Ce champ  est obligatoire priére de le remplir</div>
+          <div *ngIf="nump.errors?.['min']">Cet numero doit être de 3 chiffres au moins</div>   
+        </div>  
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <label for="#date">Date debut du stage:</label>
+        <input type="date" id="dds" name="dds" class="form-control" required ngModel #dds="ngModel">
+        <div class="error" *ngIf="dds.touched && !dds.valid">
+          <div *ngIf="dds.errors?.['required']">Ce champ  est obligatoire priére de choisir une date</div>
+        </div>  
+      </div>
+      <div class="col-md-6">
+        <label for="#date">Date fin du stage:</label>
+        <input type="date" id="dfs" name="dfs" class="form-control" required ngModel #dfs="ngModel">
+        <div class="error" *ngIf="dfs.touched && !dfs.valid">
+          <div *ngIf="dfs.errors?.['required']">Ce champ  est obligatoire priére de choisir une date</div>
+        </div>  
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <label for="#message">Parler nous briévement de vos competences et expériences ici:</label>
+      <textarea name="message"  id="message" style="height:200px" class="form-control" required ngModel #message="ngModel"></textarea>
+      <div class="error" *ngIf="message.touched && !message.valid">
+        <div *ngIf="message.errors?.['required']">Ce champ  est obligatoire priére de le remplir</div>
+      </div>  
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-4 offset-4 d-grid">
+        <button id="liveToastBtn" type="submit" class="btn" style="font-size:20px;">Envoyer</button>
+      </div>
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto">Notification:</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">{{messaage}}</div>
+        </div>
+      </div>
+    </div>
+  </form>
+ </div>
+</body>

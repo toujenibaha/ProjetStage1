@@ -1,0 +1,21 @@
+body{
+    background:linear-gradient(to bottom,rgb(15, 115, 228),rgb(228, 182, 31),rgb(246, 132, 2))
+  }
+label{
+  color:rgb(121, 4, 4);
+}
+button[id="liveToastBtn"]{
+  color: rgb(246, 255, 255);
+  background:linear-gradient(to top,rgb(149, 170, 195),rgb(23, 89, 141),rgb(149, 172, 233),rgb(62, 137, 199))
+}
+
+button[id="liveToastBtn"]:hover{
+  background:linear-gradient(to top,rgb(22, 116, 231),rgb(8, 58, 96),rgb(22, 116, 231),rgb(8,58,96));
+
+  color:white;
+}
+.error{
+  color: rgb(1, 7, 33);
+  text-align: center;
+  background-color: red;
+} 
