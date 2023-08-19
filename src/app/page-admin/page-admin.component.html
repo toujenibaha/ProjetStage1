@@ -1,0 +1,204 @@
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-primary">
+    <div class="container-fluid" style="align-items: center;">
+      <a class="navbar-brand" href="#"><img src="../../assets/images/stegLogo.jpg" style="width: 150px;" class="rounded-circle shadow-lg">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a id="encadrantS" style="text-align: center;" class="nav-link active" aria-current="page"  href="#bt3">Encadrant</a>
+          </li>
+          <li class="nav-item">
+            <a id="stagiaireS"  style="text-align: center;" class="nav-link" href="#bt1">Stagiaire</a>
+          </li>
+          <li class="nav-item">
+            <a id="stageS" style="text-align: center;" class="nav-link" href="#bt2">Stage</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <div class="row" style="display: grid;place-items:center;">
+        <img src="../../assets/images/stegLogo.jpg" style="width: 250px;" class="rounded-circle shadow-lg">
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-4 offset-4">
+        <h2 style="color:white;text-align: center;">
+          Bienvenue Admin
+        </h2>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <form (submit)="findStagiaireBy(searchCriteria,searchValue)">
+        <div class="col-4 offset-4 d-grid">
+          <div>
+            <select class="form-control d-grid" name="searchCriteria" id="searchCriteria" [(ngModel)]="searchCriteria" required>
+              <option>NomStagiaire</option>
+              <option>PrenomStagiaire</option>
+              <option >Institut</option>
+              <option>Mobile</option>
+            </select>
+            <br>
+            <input class="form-control" name="searchValue"  type="text" id="searchInput" [(ngModel)]="searchValue" placeholder="Rechercher un stagiaire..." required>
+            <div class="col-4 offset-4 d-grid">
+              <button  class="btn btn-primary blue" type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>Rechercher</button>
+             </div>
+          </div>
+        </div>
+      </form>
+    </div>  
+    <div class="row" >
+      <div class="col-4 offset-4 d-grid">
+         <a routerLink="/ajoutStagiaire" class="d-grid" style="text-decoration: none;"><button id="bt1" type="submit" class="submi2" name="submit" value="submit">
+           <span></span>
+           <span></span>
+           Ajouter Stagiaire
+           <span></span>
+           <span></span>
+   </button></a>
+     </div>
+     </div>
+         <table id="stagiaire" class="table table-bordered">
+           <thead>
+             <tr class="table-primary">
+                 <td>Nom</td>
+                 <td>Prenom<button (click)="sortStagiairesBy('prenomStagiaire')" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+                   <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+                 </svg></button></td>
+                 <td>Institut<button (click)="sortStagiairesBy('institut')" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+                   <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+                 </svg></button></td>
+                 <td>Mobile<button (click)="sortStagiairesBy('mobile')" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+                   <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+                 </svg></button></td>
+                 <td style="text-align: center;">Action</td>
+             </tr>
+           </thead>
+           <tbody class="baha">
+             <tr *ngFor="let item of stagiaires">
+                 <td>{{item.nomStagiaire}}</td>
+                 <td>{{item.prenomStagiaire}}</td>
+                 <td>{{item.institut}}</td>
+                 <td>{{item.mobile}}</td>
+                 <td>
+                     <button class="btn ajout" (click)="selectedStagiaire(item.Stage_idStage,item.Encadrant_idEncadrant,item.num_piece_identite,item.Compte_idCompte)" ><svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-plus" viewBox="0 0 16 16">
+                         <path fill-rule="evenodd" d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z"/>
+                         <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                         <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                       </svg></button>
+                     <button class="btn delete" (click)="confirmDelete(item.nomStagiaire,item.prenomStagiaire,item.idStagiaire)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-minus-fill" viewBox="0 0 16 16">
+                         <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+                         <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1ZM6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1 0-1Z"/>
+                       </svg></button>  
+                 </td>
+             </tr>
+           </tbody>
+           </table>
+          <div class="row">
+            <div class="col-4 offset-4 d-grid">
+               <a routerLink="/ajoutStage" style="text-decoration: none;" class="d-grid"><button id="bt2" type="submit" class="submi3" name="submit" value="submit">
+                 <span></span>
+                 <span></span>
+                 Ajouter Stage
+                 <span></span>
+                 <span></span>
+         </button>
+       </a>
+         </div>
+        
+           </div>
+           <table id="stage" class="table table-bordered">
+            <thead>
+              <tr class="table-danger">
+                  <td>titre</td>
+                  <td>Type De Stage<button (click)="sortStagesBy('typeStage')" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+                  </svg></button></td>
+                  <td>Date Debut<button (click)="sortStagesBy('date_debut')" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+                  </svg></button></td>
+                  <td>Date Fin<button (click)="sortStagesBy('date_fin')" class="btn btn-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
+                  </svg></button></td>
+                  <td style="text-align: center;">Action</td>
+              </tr>
+            </thead>
+            <tbody class="baha">
+              <tr *ngFor="let item of stages">
+                  <td>{{item.titre}}</td>
+                  <td>{{item.typeStage}}</td>
+                  <td>{{item.date_debut}}</td>
+                  <td>{{item.date_fin}}</td>
+                  <td>
+                      <button class="btn ajout2" (click)="selectedStage(item.idStage,item.Encadrant_idEncadrant)"  ><svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-plus" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z"/>
+                          <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                          <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                        </svg></button>
+                      <button class="btn delete2" (click)="confirmDeleteStage(item.titre,item.typeStage,item.idStage)" ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-minus-fill" viewBox="0 0 16 16">
+                          <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+                          <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1ZM6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1 0-1Z"/>
+                        </svg></button>
+                        <button class="btn delete2" (click)="confirmDeleteOfMany(item.titre,item.idStage)" >
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-excel-fill" viewBox="0 0 16 16">
+                            <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5.884 4.68 8 7.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 8l2.233 2.68a.5.5 0 0 1-.768.64L8 8.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 8 5.116 5.32a.5.5 0 1 1 .768-.64z"/>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-excel-fill" viewBox="0 0 16 16">
+                            <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5.884 4.68 8 7.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 8l2.233 2.68a.5.5 0 0 1-.768.64L8 8.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 8 5.116 5.32a.5.5 0 1 1 .768-.64z"/>
+                          </svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-excel-fill" viewBox="0 0 16 16">
+                            <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM5.884 4.68 8 7.219l2.116-2.54a.5.5 0 1 1 .768.641L8.651 8l2.233 2.68a.5.5 0 0 1-.768.64L8 8.781l-2.116 2.54a.5.5 0 0 1-.768-.641L7.349 8 5.116 5.32a.5.5 0 1 1 .768-.64z"/>
+                          </svg>
+                        </button>      
+                  </td>
+              </tr>
+            </tbody>
+            </table>
+            <div class="row">
+              <div class="col-4 offset-4 d-grid">
+                 <a routerLink="/ajoutEncadrant" style="text-decoration: none;" class="d-grid"><button id="bt3" type="submit" class="submi" name="submit" value="submit">
+                   <span></span>
+                   <span></span>
+                   Ajouter Encadrant
+                   <span></span>
+                   <span></span>
+           </button>
+         </a>
+           </div>
+             </div>
+                 <table id="encadrant" class="table table-bordered">
+                   <thead class="head">
+                     <tr class="table-success">
+                         <td>Encadrant</td>
+                         <td>Email</td>
+                         <td>Mobile</td>
+                         <td style="text-align: center;">Action</td>
+                     </tr>
+                   </thead>
+                   <tbody class="baha">
+                     <tr *ngFor="let item of encadrants">
+                         <td>{{item.nomEncadrant}} {{item.prenomEncadrant}}</td>
+                         <td>{{item.email}}</td>
+                         <td>{{item.mobile}}</td>
+                         <td>
+                             <button class="btn ajout" (click)="selectedEnc(item.idEncadrant)"  ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-plus" viewBox="0 0 16 16">
+                                 <path fill-rule="evenodd" d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z"/>
+                                 <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                 <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                               </svg></button>
+                             <button class="btn delete" (click)="confirmDeleteEncadrant(item.nomEncadrant,item.prenomEncadrant,item.idEncadrant)"  ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard-minus-fill" viewBox="0 0 16 16">
+                                 <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
+                                 <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1ZM6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1 0-1Z"/>
+                               </svg></button>  
+                         </td>
+                     </tr>
+                   </tbody>
+                   </table>
+</body>
