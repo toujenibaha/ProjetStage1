@@ -37,9 +37,9 @@ if (toastTrigger) {
   name:any
   mail:any
   messaage:any
-  private serviceID = 'service_ti5rs0x';
-  private templateID = 'template_jvvas9m';
-  private userID = 'LglSbH6DlUdNgdXlv';
+  private serviceID = '';
+  private templateID = '';
+  private userID = '';
   sendEmail(e:any,login:any) {
     const result = confirm("vous etes sur que tous les donnés ci dessous sont valides?");
     if (result) {
