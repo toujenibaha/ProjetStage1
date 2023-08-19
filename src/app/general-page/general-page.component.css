@@ -1,0 +1,142 @@
+.bodi {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url("../../assets/images/steg.jpg");
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+svg.material-icons {
+    height: 24px;
+    width: auto;
+  }
+  svg.material-icons:not(:last-child) {
+    margin-right: 8px;
+  }
+  
+  .card svg.material-icons path {
+    fill: #888;
+  }
+  
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+  }
+  
+  .card {
+    all: unset;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    height: 40px;
+    width: 200px;
+    margin: 0 8px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    line-height: 24px;
+  }
+  
+  .card-container .card:not(:last-child) {
+    margin-right: 0;
+  }
+  
+  .card.card-small {
+    height: 16px;
+    width: 168px;
+  }
+  
+  .card-container .card:not(.highlight-card) {
+    cursor: pointer;
+  }
+  
+  .card-container .card:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+  
+  .card-container .card:not(.highlight-card):hover .material-icons path {
+    fill: rgb(105, 103, 103);
+  }
+  
+  .card.highlight-card {
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    border: none;
+    width: auto;
+    min-width: 30%;
+    position: relative;
+  }
+  
+  .card.card.highlight-card span {
+    margin-left: 60px;
+  }
+  a,
+  a:visited,
+  a:hover {
+    color: #f1f3f6;
+    text-decoration: none;
+  }
+  a:hover {
+    color: #0b0b0b;
+  }
+  #a321{
+    background-color: rgb(14, 49, 133);
+  }
+  #a321:hover{
+    color: #f1f3f6;
+    text-decoration: none;
+  }
+  #a321:hover{
+    color: #0b0b0b;
+    background-color: rgb(73, 200, 232);
+  }
+  #a123{
+    background-color: rgb(51, 117, 31)  }
+  #a123:hover{
+    color: #f1f3f6;
+    text-decoration: none;
+  }
+  #a123:hover{
+    color: #0b0b0b;
+    background-color: rgb(77, 222, 33)
+    
+  }
+  svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }
+  @media screen and (max-width: 767px) {
+    .card-container > *:not(.circle-link) ,
+    .terminal {
+      width: 100%;
+    }
+  
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+  
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+  }
+  @font-face {
+    font-family: "for-intro";
+    src: url("../../assets/Fonts/Volgarie.ttf");
+ }
+ #intro{
+  font-family: for-intro;
+ }
