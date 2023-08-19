@@ -1,0 +1,57 @@
+<div class="corp">
+    <div class="login-box">
+        <h2 style="text-align: center;color:white">Formulaire d'ajout d'un Stage</h2>
+            <form (submit)="ajoutStage()">
+            <fieldset>
+                <legend>Associer un ecnadrant à cet stage:</legend>
+                <div class="row">
+                    <div class="col-sm-4 col offset-sm-4">
+                        <select name="enacdr"  id="encadr" required (change)="encChoisit()">
+                            <ng-container *ngFor="let item of encadrants"><option value="{{ item.idEncadrant }}">{{item.nomEncadrant}} {{item.prenomEncadrant}}</option></ng-container> 
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <label for="titre">Titre*</label>
+                    <input type="text" id="titre" name="titre" required [(ngModel)]="stage.titre">
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="type">Type Stage*</label>
+                    <input type=text id="type" name="type" required [(ngModel)]="stage.type">
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="time">Durée*(en jours)</label>
+                    <input type="text" id="time" name="time" required [(ngModel)]="stage.duree">
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label fpr="dateD">Date début</label>
+                       <input type="date" id="dateD" name="dateD" required [(ngModel)]="stage.dateD">
+                    </div>
+                    <div class="col-sm-6">
+                        <label fpr="dateD">Date début</label>
+                       <input type="date" id="dateD" name="dateD" required [(ngModel)]="stage.dateF">
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                   <label>Description</label>
+                   <textarea id="desc" name="desc" class=form-control required [(ngModel)]="stage.desc"></textarea>
+                </div>
+            </fieldset>
+            <div class="row">
+                <button type="submit" class="submi" name="submit" value="submit">
+                  <span></span>
+                  <span></span>
+                  Ajouter Stage
+                  <span></span>
+                  <span></span>
+          </button>
+              </div>  
+          </form> 
+        </div> 
+      </div> 
