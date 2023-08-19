@@ -1,0 +1,37 @@
+<body>
+    <div class="container">
+        <form (ngSubmit)="sendCode($event)">
+            <div class="row">
+                <div class="col-sm-4 offset-sm-4">
+                    <label for="mail">Saisir votre adresse:</label>
+                    <input class="form-control" id="mail" name="mail" type="email" required style="display:inline-block;" minlength="4" [(ngModel)]="mail">
+                </div>
+            </div>
+            <br>
+            <div class="col-sm-4 offset-sm-4">
+                <input class="form-control" id="code" name="code" type="text" [(ngModel)]="codeS" style="display:none">
+            </div>
+            <div class="col-sm-4 offset-sm-4 d-grid">
+                <button type="submit" class="btn btn-success">Reçevoir Code de verification</button>
+            </div> 
+        </form>    
+        <form (ngSubmit)="updatePwd()">
+        <div class="row">
+            <div class="col-sm-4 offset-sm-4">
+                <label  for="codeS">Saisir le code que vous avez reçue:</label>
+                <input class="form-control" (change)="compare()" id="codeS" name="codeS" type="password" minlength="4" required [(ngModel)]="codeHidden">
+                <h6  [ngClass]="{'red':message=='Code Incorrecte','green':message=='Code Correcte'}" id="message">{{message}}</h6>
+            </div>
+        </div>
+           <div class="col-sm-4 offset-sm-4">
+            <label id="labPass" for="pass">Saisir votre nouveau mot de passe:</label>
+            <input class="form-control" id="pass" name="pass" type="password" minlength="4" required [(ngModel)]="pwd">
+           </div>
+           <br>
+           <div class="col-sm-4 offset-sm-4 d-grid">
+            <button id="enrg" type="submit" class="btn btn-warning">Enregistrer</button>
+           </div>
+        </form>
+    </div>
+</body>
+

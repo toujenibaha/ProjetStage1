@@ -1,0 +1,19 @@
+
+.red{
+ color:red;
+ text-align: center;
+}
+.green{
+ color:rgb(0, 240, 0);
+ text-align: center;
+}
+label{
+    color:white;
+    font-size: 20px;
+    text-align: center;
+}
+body{
+    min-height: 100vh;
+    background:linear-gradient(to bottom,rgb(15, 115, 228),rgb(31, 34, 228),rgb(3, 42, 84));
+    width: 100%;
+}
