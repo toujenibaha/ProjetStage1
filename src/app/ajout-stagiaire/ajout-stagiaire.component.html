@@ -1,0 +1,164 @@
+<div class="corp">
+<div class="login-box">
+    <h2 style="text-align: center;color:white">Formulaire d'ajout de stagiaire</h2>
+        <form (submit)="getCompteBymail()">
+          <fieldset>
+            <legend>Informations Stagiaire:</legend>
+            <div class="row">
+              <div class="col-sm-6 col-md-4 form-group">
+                  <label for="nom">Nom*</label>
+                  <input name="nom" type="text" id="nom" required #nom="ngModel" [(ngModel)]="stagiaire.nomStagiaire" minlength="3">
+                  <div class="error" *ngIf="nom.touched && !nom.valid">
+                    <div *ngIf="nom.errors?.['required']">Ce champ est obligatoire priére de le remplir</div>
+                    <div *ngIf="nom.errors?.['minlength']">le nom doit être de 3 caractères au moins</div>
+                </div>
+                </div>
+              <br>
+              <div class="col-sm-6 col-md-4 form-group">
+                  <label for="prenom">Prénom*</label>
+                  <input name="prenom" type="text" id="prenom" #prenom="ngModel" required [(ngModel)]="stagiaire.prenomStagiaire" minlength="3">
+                  <div class="error" *ngIf="prenom.touched && !prenom.valid">
+                    <div *ngIf="prenom.errors?.['required']">Ce champ est obligatoire priére de le remplir</div>
+                    <div *ngIf="prenom.errors?.['minlength']">le Prénom doit être de 3 caractères au moins</div>
+                  </div>
+                </div>
+              <br>
+              <div class="col-sm-6 col-md-4">
+                  <label  for="PI">Pièce d'identité*</label>
+                  <select name="piece"  id="PI" required [(ngModel)]="stagiaire.piece_identite" #PI="ngModel">
+                       <option>CIN</option>
+                       <option>Passeport</option>
+                       <option>Permis</option>
+                  </select>
+                  <div class="error" *ngIf="PI.touched && !PI.valid">
+                    <div *ngIf="PI.errors?.['required']">Ce champ  est obligatoire priére de choisir une option</div>
+                  </div>   
+                </div>
+                <br>
+                <div class="col-sm-6">
+                  <label  for="nat">Nationalité*</label>
+                  <select name="nat" id="nat" required [(ngModel)]="stagiaire.nationalite" #nat="ngModel">
+                       <option>Tunisien</option>
+                       <option>Français</option>
+                  </select>
+                  <div class="error" *ngIf="nat.touched && !nat.valid">
+                    <div *ngIf="nat.errors?.['required']">Ce champ  est obligatoire priére de choisir une option</div>
+                  </div>   
+                </div>  
+            </div> 
+            <br>
+            <div class="row">
+             <div class="col-sm-6 col-md-4 form-group">
+              <label  for="NPI">Num Pièce d'identité*</label>
+              <input name="NPI" id="NPI" type="tel"  required [(ngModel)]="stagiaire.num_piece_identite" #NPI="ngModel" minlength="3">
+              <div class="error" *ngIf="NPI.touched && !NPI.valid">
+                <div *ngIf="NPI.errors?.['required']">Ce champ  est obligatoire priére de le remplir</div>
+                <div *ngIf="NPI.errors?.['minlength']">Cet numero doit être de 3 chiffres au moins</div>   
+              </div>   
+            </div>
+             <div class="col-sm-6 col-md-4 form-group">
+              <label for="mob">Mobile*</label>
+              <input name="mob" id="mob" type="tel"  [(ngModel)]="stagiaire.mobile" #mob="ngModel" required pattern="[1-9]{2}[0-9]{3}[0-9]{3}">
+              <div class="error" *ngIf="mob.touched && !mob.valid">
+                <div *ngIf="mob.errors?.['required']">Ce champ  est obligatoire priére de le remplir</div>
+                <div *ngIf="mob.errors?.['pattern']">le numero doit être de 8 chiffres exactement</div>   
+              </div>   
+            </div>
+             <div class="col-sm-6 col-md-4 form-group">
+              <label  for="g">Genre*</label>
+              <select name="g"  id="g" required [(ngModel)]="stagiaire.genre" #g="ngModel">
+                   <option>Homme</option>
+                   <option>Femme</option>    
+              </select>
+              <div class="error" *ngIf="g.touched && !g.valid">
+                <div *ngIf="g.errors?.['required']">Ce champ  est obligatoire priére de choisir une option</div>
+              </div>
+            </div>
+            </div>
+            <br>
+            <div class="row form-group">
+              <label for="mail">Email*</label>
+              <input name="mail" id="mail" type="email" #mail="ngModel" required [(ngModel)]="stagiaire.Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
+              <div class="error" *ngIf="mail.touched && !mail.valid">
+                <div *ngIf="mail.errors?.['required']">Ce champ  est obligatoire priére de le remplir</div>
+                <div *ngIf="mail.errors?.['pattern']">Cet adrresse ne suit pas le format correct pour le moment</div>   
+              </div>  
+            </div>
+          </fieldset>
+          <br>
+          <br>
+          <fieldset>
+            <legend>Informations Institut:</legend>
+            <div class="row">
+              <div class="col-sm-6 col-md-3">
+                <label  for="gov">Gouvernorat*</label>
+                <select name="gov" id="gov" required [(ngModel)]="stagiaire.gouvernorat" #gov="ngModel">
+                     <option>Ben arous</option>
+                     <option>Ariana</option>
+                </select>
+                <div class="error" *ngIf="gov.touched && !gov.valid">
+                  <div *ngIf="gov.errors?.['required']">Ce champ  est obligatoire priére de choisir une option</div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-md-3 form-group">
+                <label for="ins">Institut ou autre*</label>
+                <input name="ins" id="ins" type="text" required [(ngModel)]="stagiaire.institut" #ins="ngModel" minlength="3">
+                <div class="error" *ngIf="ins.touched && !ins.valid">
+                  <div *ngIf="ins.errors?.['required']">Ce champ  est obligatoire priére de le remplir</div>
+                  <div *ngIf="ins.errors?.['minlength']">Ce champ doit être de 3 lettres au moins</div>   
+                </div>   
+              </div>
+              <div class="col-sm-6 col-md-3">
+                <label for="dip">Diplome*</label>
+                <input name="dip" id="dip" type="text" required [(ngModel)]="stagiaire.diplome" #dip="ngModel" minlength="4">
+                <div class="error" *ngIf="dip.touched && !dip.valid">
+                  <div *ngIf="dip.errors?.['required']">Ce champ  est obligatoire priére de le remplir</div>
+                  <div *ngIf="dip.errors?.['minlength']">Ce champ doit être de 4 lettres au moins</div>   
+                </div>   
+              </div>
+              <div class="col-sm-6 col-md-3 form-group">
+                <label for="sp">Spécialité*</label>
+                <input name="sp" id="sp" type="text" required [(ngModel)]="stagiaire.specialite" #sp="ngModel" minlength="4">
+                <div class="error" *ngIf="sp.touched && !sp.valid">
+                  <div *ngIf="sp.errors?.['required']">Ce champ  est obligatoire priére de le remplir</div>
+                  <div *ngIf="sp.errors?.['minlength']">Ce champ doit être de 4 lettres au moins</div>   
+                </div>   
+              </div>
+            </div>
+          </fieldset>
+          <br>
+          <br>
+          <fieldset>
+            <legend >Informations stage:</legend>
+            <div class="row">
+              <div class="col-sm-6 col-md-4">
+                <label  for="encadr">Encadrant*</label>
+                <select name="enacdr"  id="encadr" required (change)="encChoisit()">
+                  <ng-container *ngFor="let item of encadrants"><option value="{{ item.idEncadrant }}" >{{item.nomEncadrant}} {{item.prenomEncadrant}}</option></ng-container>
+                </select>
+              </div>
+              <div class="col-sm-6 col-md-4">
+                <label  for="sujet">Sujet*</label>
+                <select name="sujet"  id="sujet" required (change)="encChoisit2()">
+                  <ng-container *ngFor="let item of stages"><option value="{{ item.idStage }}">{{item.titre}}</option></ng-container>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label for="ind">Indemnité(DT)*</label>
+                <input name="ind" id="ind" type="number" required required [(ngModel)]="stagiaire.indemnite">
+              </div>
+            </div>
+          </fieldset>
+          <br>
+        <div class="row">
+          <button type="submit" class="submi" name="submit" value="submit">
+            <span></span>
+            <span></span>
+            Ajouter stagiaire
+            <span></span>
+            <span></span>
+    </button>
+        </div>  
+      </form>
+  </div> 
+</div>  
