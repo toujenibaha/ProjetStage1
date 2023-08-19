@@ -1,11 +1,24 @@
-<!doctype html>
+<!doctype html5>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" >
   <title>ProjetStage</title>
-  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://smtpjs.com/v3/smtp.js"></script> 
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId            : '',
+        autoLogAppEvents : true,
+        xfbml            : true,
+        version          : 'v17.0'
+      });
+    };
+  </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+      
 </head>
 <body>
   <app-root></app-root>
