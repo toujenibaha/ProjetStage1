@@ -1,0 +1,67 @@
+<div class="corp">
+    <div class="login-box">
+        <h2 style="text-align: center;color:white">Formulaire d'ajout d'encadrant</h2>
+            <form (ngSubmit)="ajoutEncadrant()">
+              <fieldset>
+                <legend>Informations Encadrant:</legend>
+                <div class="row">
+                  <div class="col-sm-6 form-group">
+                      <label for="nom">Nom*</label>
+                      <input name="nom" type="text" id="nom" #nom="ngModel" required [(ngModel)]="encadrant.nomEncadrant" minlength="3">
+                      <div class="error" *ngIf="nom.touched && !nom.valid">
+                        <div *ngIf="nom.errors?.['required']">Ce champ est obligatoire priére de le remplir</div>
+                        <div *ngIf="nom.errors?.['minlength']">le nom doit être de 3 caractères au moins</div>
+                      </div>
+                    </div>
+                  <br>
+                  <div class="col-sm-6 form-group">
+                      <label for="prenom">Prénom*</label>
+                      <input  minlength="3" name="prenom" type="text" #prenom="ngModel" id="prenom" required [(ngModel)]="encadrant.prenomEncadrant">
+                      <div class="error" *ngIf="prenom.touched && !prenom.valid">
+                        <div *ngIf="prenom.errors?.['required']">Ce champ est obligatoire priére de le remplir</div>
+                        <div *ngIf="prenom.errors?.['minlength']">le Prénom doit être de 3 caractères au moins</div>
+                      </div>
+                    </div>   
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-4">
+                      <label for="mob">Mobile*</label>
+                      <input name="mob" id="mob" type="tel" required [(ngModel)]="encadrant.mobile" #mob="ngModel" pattern="[1-9]{2}[0-9]{3}[0-9]{3}">
+                      <div class="error" *ngIf="mob.touched && !mob.valid">
+                        <div *ngIf="mob.errors?.['required']">Ce champ  est obligatoire priére de le remplir</div>
+                        <div *ngIf="mob.errors?.['pattern']">le numero doit être de 8 chiffres exactement</div>   
+                      </div>  
+                    </div>
+                    <div class="col-sm-4">
+                        <label  for="NPI">CIN*</label>
+                        <input name="NPI" id="NPI" type="tel"  required [(ngModel)]="encadrant.cin" #NPI="ngModel" minlength="3">
+                        <div class="error" *ngIf="NPI.touched && !NPI.valid">
+                          <div *ngIf="NPI.errors?.['required']">Ce champ  est obligatoire priére de le remplir</div>
+                          <div *ngIf="NPI.errors?.['minlength']">Cet numero doit être de 3 chiffres au moins</div>   
+                        </div>  
+                      </div>
+                    <div class="col-sm-4">
+                        <label for="mail">Email*</label>
+                        <input name="mail" id="mail" type="email" required [(ngModel)]="encadrant.email" #mail="ngModel" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
+                        <div class="error" *ngIf="mail.touched && !mail.valid">
+                          <div *ngIf="mail.errors?.['required']">Ce champ  est obligatoire priére de le remplir</div>
+                          <div *ngIf="mail.errors?.['pattern']">Cet adrresse ne suit pas le format correct pour le moment</div>   
+                        </div>  
+                      </div>
+                </div>     
+            </fieldset>
+            <br>
+            <br>      
+            <div class="row">
+              <button type="submit" class="submi" name="submit" value="submit">
+                <span></span>
+                <span></span>
+                Ajouter Encadrant
+                <span></span>
+                <span></span>
+        </button>
+            </div>  
+        </form> 
+      </div> 
+    </div> 
