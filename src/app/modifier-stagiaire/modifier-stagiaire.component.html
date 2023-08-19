@@ -1,0 +1,141 @@
+<div class="corp">
+    <div class="login-box">
+        <h2 style="text-align: center;color:white">Formulaire de modification du stagiaire</h2>
+            <form (submit)="updateStagiaire()">
+              <fieldset>
+                <legend>Informations Stagiaire:</legend>
+                <div class="row">
+                  <div class="col-sm-6 col-md-3">
+                      <label for="nom">Nom*</label>
+                      <input name="nom" type="text" id="nom" required [(ngModel)]="stagiaire.nomStagiaire">
+                  </div>
+                  <br>
+                  <div class="col-sm-6 col-md-3">
+                      <label for="prenom">Prénom*</label>
+                      <input name="prenom" type="text" id="prenom" required [(ngModel)]="stagiaire.prenomStagiaire">
+                  </div>
+                  <br>
+                  <div class="col-sm-6 col-md-3">
+                    <label  for="PII">Pièce d'identité du stagiaire*</label>
+                    <input name="pII" type="text" id="PII"  [(ngModel)]="stagiaire.piece_identite" disabled>
+                  </div>
+                  <br>
+                  <div class="col-sm-6 col-md-3">
+                      <label  for="PI">Pièce d'identité*</label>
+                      <select name="piece"  id="PI" required [(ngModel)]="stagiaire.piece_identite">
+                           <option>CIN</option>
+                           <option>Passeport</option>
+                      </select>
+                    </div>
+                    <br>
+                    <div class="col-sm-6">
+                        <label  for="natt">Nationalité du stagiaire*</label>
+                          <input type="text" name="natt" id="natt" [(ngModel)]="stagiaire.nationalite" disabled>
+                      </div>  
+                    <br>  
+                    <div class="col-sm-6">
+                      <label  for="nat">Nationalité*</label>
+                      <select name="nat" id="nat" required [(ngModel)]="stagiaire.nationalite">
+                           <option>Tunisien</option>
+                           <option>Français</option>
+                      </select>
+                    </div>  
+                </div> 
+                <br>
+                <div class="row">
+                 <div class="col-sm-6 col-md-3">
+                  <label  for="NPI">Num Pièce d'identité*</label>
+                  <input name="NPI" id="NPI" type="tel"  required [(ngModel)]="stagiaire.num_piece_identite">
+                 </div>
+                 <div class="col-sm-6 col-md-3">
+                  <label for="mob">Mobile*</label>
+                  <input name="mob" id="mob" type="tel" required [(ngModel)]="stagiaire.mobile">
+                 </div>
+                 <div class="col-sm-6 col-md-3">
+                    <label  for="gender">Genre du stagiaire*</label>
+                    <input name="gender"  id="gdener"  [(ngModel)]="stagiaire.genre" disabled>
+                  </div>
+                 <div class="col-sm-6 col-md-3">
+                  <label  for="g">Genre*</label>
+                  <select name="g"  id="g" required [(ngModel)]="stagiaire.genre">
+                       <option>Homme</option>
+                       <option>Femme</option>
+                  </select>
+                </div>
+                </div>
+                <br>
+              </fieldset>
+              <br>
+              <br>
+              <fieldset>
+                <legend>Informations Institut:</legend>
+                <div class="row">
+                    <div class="col-sm-6 col-md-3">
+                        <label for="govv">gouvernorat du stagiaire</label>
+                        <input name="govv" id="govv" type="text"  [(ngModel)]="stagiaire.gouvernorat" disabled>
+                      </div>
+                  <div class="col-sm-6 col-md-3">
+                    <label  for="gov">Gouvernorat*</label>
+                    <select name="gov" id="gov" required [(ngModel)]="stagiaire.gouvernorat">
+                         <option>Ben arous</option>
+                         <option>Ariana</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <label for="ins">Institut ou autre*</label>
+                    <input name="ins" id="ins" type="text" required [(ngModel)]="stagiaire.institut">
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <label for="dip">Diplome*</label>
+                    <input name="dip" id="dip" type="text" required [(ngModel)]="stagiaire.diplome">
+                  </div>
+                  <div class="col-sm-6 col-md-3">
+                    <label for="sp">Spécialité*</label>
+                    <input name="sp" id="sp" type="text" required [(ngModel)]="stagiaire.specialite">
+                  </div>
+                </div>
+              </fieldset>
+              <br>
+              <br>
+              <fieldset>
+                <legend >Informations stage:</legend>
+                <div class="row">
+                    <div class="col-sm-6 col-md-auto">
+                        <label  for="encadrr">Encadrant du stagiaire*</label>
+                        <input type="text" name="enacdrr"  id="encadrr" [(ngModel)]="nomE" disabled>
+                      </div>
+                  <div class="col-sm-6 col-md-auto">
+                    <label  for="encadr">Encadrant*</label>
+                    <select name="enacdr"  id="encadr" required (change)="encChoisit()">
+                      <ng-container *ngFor="let item of encadrants"><option value="{{ item.idEncadrant }}">{{item.nomEncadrant}} {{item.prenomEncadrant}}</option></ng-container>
+                    </select>
+                  </div>
+                  <div class="col-sm-6 col-md-auto">
+                    <label  for="sujett">Sujet du stagiaire*</label>
+                    <input type="text" name="sujett"  id="sujett" [(ngModel)]="nomS" disabled>
+                  </div>
+                  <div class="col-sm-6 col-md-auto">
+                    <label  for="sujet">Sujet*</label>
+                    <select name="sujet"  id="sujet" required (change)="encChoisit2()">
+                        <ng-container *ngFor="let item of stages"><option value="{{ item.idStage }}">{{item.titre}}</option></ng-container>
+                      </select>
+                  </div>
+                  <div class="col-md-auto">
+                    <label for="ind">Indemnité(DT)*</label>
+                    <input name="ind" id="ind" type="text" required required [(ngModel)]="stagiaire.indemnite">
+                  </div>
+                </div>
+              </fieldset>
+              <br>
+            <div class="row">
+              <button type="submit" class="submi" name="submit" value="submit">
+                <span></span>
+                <span></span>
+                modifier stagiaire
+                <span></span>
+                <span></span>
+        </button>
+            </div>  
+          </form>
+      </div> 
+    </div>  
