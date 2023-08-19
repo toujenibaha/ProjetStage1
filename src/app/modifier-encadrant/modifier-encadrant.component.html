@@ -1,0 +1,47 @@
+<div class="corp">
+    <div class="login-box">
+        <h2 style="text-align: center;color:white">Formulaire de modification d'encadrant</h2>
+            <form >
+              <fieldset>
+                <legend>Modifier Encadrant:</legend>
+                <div class="row">
+                  <div class="col-sm-6">
+                      <label for="nom">Nom*</label>
+                      <input name="nom" type="text" id="nom" required [(ngModel)]="encadrant.nomEncadrant">
+                  </div>
+                  <br>
+                  <div class="col-sm-6">
+                      <label for="prenom">Prénom*</label>
+                      <input name="prenom" type="text" id="prenom" required [(ngModel)]="encadrant.prenomEncadrant">
+                  </div>   
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-4">
+                      <label for="mob">Mobile*</label>
+                      <input name="mob" id="mob" type="tel" required [(ngModel)]="encadrant.mobile">
+                    </div>
+                    <div class="col-sm-4">
+                        <label  for="NPI">CIN*</label>
+                        <input name="NPI" id="NPI" type="tel"  required [(ngModel)]="encadrant.cin">
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="mail">Email*</label>
+                        <input name="mail" id="mail" type="email" required [(ngModel)]="encadrant.email">
+                    </div>
+                </div>     
+            </fieldset>
+            <br>
+            <br>    
+            <div class="row">
+              <button (click)="modifierEncadrant()" type="submit" class="submi" name="submit" value="submit">
+                <span></span>
+                <span></span>
+                 Modifier Encadrant
+                <span></span>
+                <span></span>
+        </button>
+            </div>  
+        </form> 
+      </div> 
+    </div> 
